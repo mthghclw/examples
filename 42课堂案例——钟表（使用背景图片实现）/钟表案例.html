@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#clock {
+			width: 600px;
+			height: 600px;
+			margin: 0 auto;
+			background: url(./images/clock.jpg) no-repeat;
+			position: relative;
+			
+		}
+
+		#hours {
+			width: 100%;
+			height: 100%;
+			background: url(./images/hour.png) no-repeat center;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#minutes {
+			width: 100%;
+			height: 100%;
+			background: url(./images/minute.png) no-repeat center;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#seconds {
+			width: 100%;
+			height: 100%;
+			background: url(./images/second.png) no-repeat center;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="clock">
+		<div id="hours"></div>
+		<div id="minutes"></div>
+		<div id="seconds" style="transform: rotate(30deg);"></div>
+	</div>
+
+	<script>
+
+		// 根据标签id属性的值获取元素
+
+		var hour = document.getElementById('hours');
+		var minute = document.getElementById('minutes');
+		var second = document.getElementById('seconds');
+
+		setInterval(function() {
+			// 获取当前时间
+			var now = new Date();
+			var h = now.getHours();  // 小时
+			var m = now.getMinutes(); // 分钟
+			var s = now.getSeconds(); // 秒数
+
+			// 时针走一步是30度
+			// 15：20：30
+
+			// 时针应该走的的度数
+			var hDeg = h * 30;
+
+			// 分针应该走的度数
+			var mDeg = m * 6;
+
+			// 秒针应该走的度数
+
+			var sDeg = s * 6;
+
+			// 59             4.9
+			// 总分钟 / 12分钟 = 小格数
+			// 小格数 * 6deg = 时针应该走的的度数
+
+			hDeg += Math.floor(m / 12)*6;
+
+			hour.style.transform = 'rotate('+ hDeg +'deg)';
+			minute.style.transform = 'rotate('+ mDeg +'deg)';
+			second.style.transform = 'rotate('+ sDeg +'deg)';
+			
+		}, 1000)
+	</script>
+</body>
+</html>
+
+<!-- 结束时间2018-4-2 17: 30 : 40 - 当前时间
+
+new Date(2018, 3, 1) - new Date()  
+
+毫秒值   - 毫秒值 = 剩余的毫秒值
+
+小时 分钟 秒 -->
