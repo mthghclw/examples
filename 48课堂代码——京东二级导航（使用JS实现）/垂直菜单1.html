@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		body {
+			background-color: #aaa;
+		}
+
+		.jd_cate {
+			position: relative;
+		}
+
+		.jd_cate ul {
+			height: 450px;
+			width: 190px;
+			margin: 0;
+			padding: 15px 0;
+			list-style: none;
+			font-size: 14px;
+			color: #636363;
+			background-color: #fefefe;
+		}
+
+		.jd_cate ul li {
+			height: 28px;
+			line-height: 28px;
+			padding-left: 14px;
+		}
+
+		.jd_cate ul li:hover {
+			background-color: #d9d9d9;
+		}
+
+	
+
+		.jd_cate ul li a {
+			text-decoration: none;
+			color: #666;
+		}
+
+		.jd_cate ul li a:hover {
+			text-decoration: underline;
+			color: #c81623;
+		}
+
+		.cate-pop {
+			position: absolute;
+			top: 0;
+			left: 191px;
+			width: 798px;
+			min-height: 478px;
+			border: 1px solid #f7f7f7;
+			background-color: #fff;
+		}
+
+		.cate-part {
+		    /*display: none;*/
+		    padding: 20px 0 10px;
+		}
+
+
+		
+		
+	</style>
+</head>
+<body>
+	<div class="jd_cate">
+		<ul class="cate-menu">
+			<li class="cate_menu_item"><a href="#">女装</a> / <a href="#">男装</a> / <a href="#">内衣</a></li>
+			<li class="cate_menu_item"><a href="#">鞋靴</a> / <a href="#">箱包</a> / <a href="#">配件</a></li>
+			<li class="cate_menu_item"><a href="#">童装玩具</a> / <a href="#">孕产</a> / <a href="#">用品</a></li>
+			<li class="cate_menu_item"><a href="#">家电</a> / <a href="#">数码</a> / <a href="#">手机</a></li>
+			<li class="cate_menu_item"><a href="#">美妆</a> / <a href="#">洗护</a> / <a href="#">保健品</a></li>
+			<li class="cate_menu_item"><a href="#">珠宝</a> / <a href="#">眼镜</a> / <a href="#">手表</a></li>
+			<li class="cate_menu_item"><a href="#">运动</a> / <a href="#">户外</a> / <a href="#">乐器</a></li>
+			<li class="cate_menu_item"><a href="#">游戏</a> / <a href="#">动漫</a> / <a href="#">影视</a></li>
+			<li class="cate_menu_item"><a href="#">美食</a> / <a href="#">生鲜</a> / <a href="#">零食</a></li>
+			<li class="cate_menu_item"><a href="#">鲜花</a> / <a href="#">宠物</a> / <a href="#">农资</a></li>
+			<li class="cate_menu_item"><a href="#">房产</a> / <a href="#">装修</a> / <a href="#">建材</a></li>
+			<li class="cate_menu_item"><a href="#">家具</a> / <a href="#">家饰</a> / <a href="#">家纺</a></li>
+			<li class="cate_menu_item"><a href="#">汽车</a> / <a href="#">二手车</a> / <a href="#">用品</a></li>
+			<li class="cate_menu_item"><a href="#">办公</a> / <a href="#">DIY</a> / <a href="#">五金电子</a></li>
+			<li class="cate_menu_item"><a href="#">百货</a> / <a href="#">餐厨</a> / <a href="#">家庭保健</a></li>
+			<li class="cate_menu_item"><a href="#">学习</a> / <a href="#">卡券</a> / <a href="#">本地服务</a></li>
+		</ul>
+		<div id="jd_popCtn" class="cate-pop" style="display: none;">
+			<div class="cate-part" style="display: none;">1</div>
+			<div class="cate-part" style="display: none;">2</div>
+			<div class="cate-part" style="display: none;">3</div>
+			<div class="cate-part" style="display: none;">4</div>
+			<div class="cate-part" style="display: none;">5</div>
+			<div class="cate-part" style="display: none;">6</div>
+			<div class="cate-part" style="display: none;">7</div>
+			<div class="cate-part" style="display: none;">8</div>
+			<div class="cate-part" style="display: none;">9</div>
+			<div class="cate-part" style="display: none;">10</div>
+			<div class="cate-part" style="display: none;">11</div>
+			<div class="cate-part" style="display: none;">12</div>
+			<div class="cate-part" style="display: none;">13</div>
+			<div class="cate-part" style="display: none;">14</div>
+			<div class="cate-part" style="display: none;">15</div>
+			<div class="cate-part" style="display: none;">16</div>
+		</div>
+		
+	</div>
+	<script>
+		var cateMenu = document.getElementsByClassName('cate-menu')[0];
+		var cateMenuItem = document.getElementsByClassName('cate_menu_item');
+		var catePart = document.getElementsByClassName('cate-part');
+		var popCtn = document.getElementById('jd_popCtn');
+
+		cateMenu.onmouseover = function() {
+			popCtn.style.display = 'block';
+		}
+
+		cateMenu.onmouseout = function() {
+			popCtn.style.display = 'none';
+		}
+
+		for (var i = 0; i < cateMenuItem.length; i++) {
+			cateMenuItem[i].cateMenuItemIndex = i;
+			cateMenuItem[i].onmouseover = function() {
+				console.log(this.cateMenuItemIndex)
+				popCtn.style.display = 'block';
+				catePart[this.cateMenuItemIndex].style.display = 'block';
+			}
+
+			cateMenuItem[i].onmouseout = function() {
+				console.log(this.cateMenuItemIndex)
+				popCtn.style.display = 'none';
+				catePart[this.cateMenuItemIndex].style.display = 'none';
+			}
+		}
+	</script>
+</body>
+</html>
